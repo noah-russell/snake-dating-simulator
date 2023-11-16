@@ -1,13 +1,18 @@
-import { useFruits } from '../hooks/useFruits.ts'
+import RepDisplay from './RepDisplay'
+import CommentForm from './Comment'
+import '../styles/main.css'
+
+//New code for useState here
+
+//
 
 function App() {
-  const { data } = useFruits()
-
   return (
     <>
       <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
+        <h1>snake_dating_simulator</h1>
+        <RepDisplay />
+        <CommentForm />
       </div>
     </>
   )
