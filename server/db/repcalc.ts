@@ -1,21 +1,24 @@
-import connection from './connection.ts'
+import connection from './connection'
 import { Reputation } from '../../models/repModel'
+import {}
 
-export async function getAllFruits(db = connection): Promise<Fruit[]> {
-  return db('fruit').select()
-}
 //  Test functions
 
-export async function addMessage(newMessage: MessageData): Promise<Message> {
-
-
-
+export async function addMessage(newMessage: MessageData): Promise<Reputation> {
   function matchPositive() {
     const string = newMessage
     const positive = string.match(/pretty|fun|/gi)
     return positive
   }
-  matchPositive()
+
+  function matchNegative() {
+    const string = newMessage
+    const negative = string.match(/ugly|gross|/gi)
+    return negative
+  }
+  const scoreArr = [matchNegative() + matchPositive()]
+  const messageCalculation = scoreArr.length * 5
+
   const dbMessage = { message: newMessage, newRep: messageCalculation }
 
   const [message] = await connection('reputation')
