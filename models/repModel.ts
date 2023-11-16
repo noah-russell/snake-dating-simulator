@@ -3,4 +3,5 @@ export interface Reputation {
   currentRep: number
   message: string
   newRep: string
+  messageCalculation: number
 }
