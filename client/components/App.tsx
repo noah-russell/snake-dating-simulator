@@ -1,5 +1,6 @@
 import RepDisplay from './RepDisplay'
 import CommentForm from './Comment'
+import '../styles/main.css'
 
 function App() {
   return (
