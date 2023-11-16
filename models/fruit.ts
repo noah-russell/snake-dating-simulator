@@ -1,8 +1,6 @@
-export interface Fruit {
+export interface Reputation {
   id: number
-  name: string
-}
-
-export interface FruitData {
-  name: string
+  currentRep: number
+  message: string
+  newRep: string
 }
