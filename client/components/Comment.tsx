@@ -1,40 +1,47 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
-
-const initialFormData = {
-  comment: '',
-}
+import { ChangeEvent, FormEvent, useState } from 'react'
+import { addMessage } from '../../server/db/repcalc'
+import { sendComment } from '../apis/apiClient'
 
 export default function CommentForm() {
-  const [form, setForm] = useState(initialFormData)
+  const [comment, setComment] = useState('')
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = event.target
-    setForm({ ...form, [name]: value })
+    // const { name, value } = event.target
+    // const formObj = { ...form, [event.target.name]: event.target.value }
+    // setForm(formObj)
+    // console.log(form)
+    setComment(event.target.value)
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     // Handle the submission of the form data (e.g., send it to a server or perform some action)
-    console.log('Form submitted:', form.comment)
-    // Optionally, you can reset the form after submission
-    setForm(initialFormData)
+    // addMessage(form.comment)
+    // console.log(event.target.value)
+    // // Optionally, you can reset the form after submission
+    sendComment(comment)
+    // addMessage(comment)
+    console.log(comment)
+    setComment('')
   }
 
   return (
-    <form onSubmit={handleSubmit} aria-label="Add Comment Form">
-      <p>
-        <label htmlFor="comment">Comment:</label>
-        <br />
-        <input
-          id="comment"
-          type="text"
-          onChange={handleChange}
-          value={form.comment}
-          name="comment"
-        />
-      </p>
+    <>
+      <form onSubmit={handleSubmit} aria-label="Add Comment Form">
+        <p>
+          <label htmlFor="comment">Comment:</label>
+          <br />
+          <input
+            id="comment"
+            type="text"
+            onChange={handleChange}
+            value={comment}
+            name="comment"
+          />
+        </p>
 
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Submit</button>
+      </form>
+    </>
   )
 }
