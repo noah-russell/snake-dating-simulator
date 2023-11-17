@@ -1,16 +1,15 @@
 import { Router } from 'express'
-
-import * as db from '../db/reputation.ts'
+import { getNewRep } from '../db/db'
 
 const router = Router()
 
 router.get('/', async (req, res) => {
   try {
-    const reputation = await db.getCurrentRep()
+    const newRep = await db.getNewRep()
 
-    res.json({ fruits: fruits.map((fruit) => fruit.name) })
+    res.json({ newRep })
   } catch (error) {
-    console.log(error)
+    console.error(error)
     res.status(500).json({ message: 'Something went wrong' })
   }
 })
