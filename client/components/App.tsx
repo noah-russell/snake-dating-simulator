@@ -10,9 +10,10 @@ function App() {
   return (
     <>
       <div className="app">
-        <h1>snake_dating_simulator</h1>
-        <RepDisplay />
-        <CommentForm />
+        <h1 className="title">snake_dating_simulator</h1>
+        <RepDisplay className="rep-display" />
+        <img src="../public/snake.jpg" alt="Snake" className="snake-image" />
+        <CommentForm className="comment-form" />
       </div>
     </>
   )
